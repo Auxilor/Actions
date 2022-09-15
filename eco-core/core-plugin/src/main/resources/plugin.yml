@@ -1,0 +1,49 @@
+name: Actions
+version: ${projectVersion}
+main: com.willfp.actions.ActionsPlugin
+api-version: 1.17
+authors: [ Auxilor ]
+website: willfp.com
+load: STARTUP
+depend:
+  - eco
+  - ProtocolLib
+softdepend:
+  - AureliumSkills
+  - Vault
+  - mcMMO
+  - Jobs
+  - TMMobcoins
+  - EcoEnchants
+  - EcoBosses
+  - Talismans
+  - EcoArmor
+  - EcoItems
+  - Boosters
+  - EcoSkills
+  - Reforges
+  - ModelEngine
+  - EcoJobs
+  - LevelledMobs
+  - EcoPets
+commands:
+  actions:
+    description: Base Command
+    permission: actions.command.actions
+
+permissions:
+  actions.*:
+    description: All actions permissions
+    default: op
+    children:
+      actions.command.*: true
+  actions.command.*:
+    description: All commands
+    default: op
+    children:
+      actions.command.actions: true
+      actions.command.reload: true
+
+  actions.command.reload:
+    description: Allows reloading the config
+    default: op

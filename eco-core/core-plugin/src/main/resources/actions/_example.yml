@@ -1,0 +1,25 @@
+# The ID of the action is the name of the .yml file,
+# for example coins_on_kill.yml has the ID of coins_on_kill
+# You can place actions anywhere in this folder,
+# including in subfolders if you want to organize your action configs
+# _example.yml is not loaded.
+
+# If the action should be enabled
+enabled: true
+
+# Read https://plugins.auxilor.io/effects/configuring-an-effect
+# The effects for the action
+effects:
+  - id: give_money
+    args:
+      amount: "0.25 * %victim_level%"
+    triggers:
+      - kill
+    filters:
+      not_entities:
+        - player
+
+
+# Read https://plugins.auxilor.io/effects/configuring-a-condition
+# The conditions for the action to work
+conditions: [ ]
