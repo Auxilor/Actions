@@ -43,7 +43,15 @@ permissions:
     children:
       actions.command.actions: true
       actions.command.reload: true
+      actions.command.import: true
+      actions.command.export: true
 
   actions.command.reload:
     description: Allows reloading the config
+    default: op
+  actions.command.import:
+    description: Allows importing configs
+    default: op
+  actions.command.export:
+    description: Allows exporting configs
     default: op

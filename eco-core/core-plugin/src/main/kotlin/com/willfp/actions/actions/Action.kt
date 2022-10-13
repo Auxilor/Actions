@@ -8,7 +8,7 @@ import java.util.*
 
 class Action(
     override val id: String,
-    config: Config
+    val config: Config
 ) : Holder {
     val enabled = config.getBool("enabled")
 
