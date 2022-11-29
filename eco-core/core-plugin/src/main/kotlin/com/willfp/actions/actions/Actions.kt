@@ -43,7 +43,7 @@ object Actions {
         }
 
         for ((id, actionConfig) in plugin.fetchConfigs("actions")) {
-            addNewAction(Action(id, actionConfig))
+            addNewAction(Action(plugin, id, actionConfig))
         }
     }
 
