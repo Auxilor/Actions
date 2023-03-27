@@ -1,29 +1,13 @@
-name: Actions
-version: ${projectVersion}
-main: com.willfp.actions.ActionsPlugin
+name: ${pluginName}
+version: ${version}
+main: com.willfp.actions.ActionsPLugin
 api-version: 1.17
 authors: [ Auxilor ]
 website: willfp.com
 depend:
   - eco
 softdepend:
-  - AureliumSkills
-  - Vault
-  - mcMMO
-  - Jobs
-  - TMMobcoins
-  - EcoEnchants
-  - EcoBosses
-  - Talismans
-  - EcoArmor
-  - EcoItems
-  - Boosters
-  - EcoSkills
-  - Reforges
-  - ModelEngine
-  - EcoJobs
-  - LevelledMobs
-  - EcoPets
+  - libreforge
 commands:
   actions:
     description: Base Command
@@ -41,15 +25,7 @@ permissions:
     children:
       actions.command.actions: true
       actions.command.reload: true
-      actions.command.import: true
-      actions.command.export: true
 
   actions.command.reload:
     description: Allows reloading the config
-    default: op
-  actions.command.import:
-    description: Allows importing configs
-    default: op
-  actions.command.export:
-    description: Allows exporting configs
     default: op

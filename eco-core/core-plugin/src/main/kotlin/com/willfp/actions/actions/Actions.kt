@@ -1,13 +1,14 @@
 package com.willfp.actions.actions
 
-import com.google.common.collect.BiMap
-import com.google.common.collect.HashBiMap
 import com.google.common.collect.ImmutableList
 import com.willfp.actions.ActionsPlugin
-import com.willfp.eco.core.config.updating.ConfigUpdater
+import com.willfp.eco.core.config.interfaces.Config
+import com.willfp.eco.core.registry.Registry
+import com.willfp.libreforge.loader.LibreforgePlugin
+import com.willfp.libreforge.loader.configs.ConfigCategory
 
-object Actions {
-    private val BY_ID: BiMap<String, Action> = HashBiMap.create()
+object Actions : ConfigCategory("action", "actions") {
+    private val registry = Registry<Action>()
 
     /**
      * Get all registered [Action]s.
@@ -16,7 +17,7 @@ object Actions {
      */
     @JvmStatic
     fun values(): List<Action> {
-        return ImmutableList.copyOf(BY_ID.values)
+        return ImmutableList.copyOf(registry.values())
     }
 
     /**
@@ -27,44 +28,14 @@ object Actions {
      */
     @JvmStatic
     fun getByID(name: String): Action? {
-        return BY_ID[name]
+        return registry[name]
     }
 
-    /**
-     * Update all [Action]s.
-     *
-     * @param plugin Instance of Actions.
-     */
-    @ConfigUpdater
-    @JvmStatic
-    fun update(plugin: ActionsPlugin) {
-        for (action in values()) {
-            removeAction(action)
-        }
-
-        for ((id, actionConfig) in plugin.fetchConfigs("actions")) {
-            addNewAction(Action(plugin, id, actionConfig))
-        }
+    override fun clear(plugin: LibreforgePlugin) {
+        registry.clear()
     }
 
-    /**
-     * Add new [Action] to Actions.
-     *
-     * @param action The [Action] to add.
-     */
-    @JvmStatic
-    fun addNewAction(action: Action) {
-        BY_ID.remove(action.id)
-        BY_ID[action.id] = action
-    }
-
-    /**
-     * Remove [Action] from Actions.
-     *
-     * @param action The [Action] to remove.
-     */
-    @JvmStatic
-    fun removeAction(action: Action) {
-        BY_ID.remove(action.id)
+    override fun acceptConfig(plugin: LibreforgePlugin, id: String, config: Config) {
+        registry.register(Action(plugin as ActionsPlugin, id, config))
     }
 }

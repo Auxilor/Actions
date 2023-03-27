@@ -3,21 +3,25 @@ package com.willfp.actions
 import com.willfp.actions.actions.Actions
 import com.willfp.actions.commands.CommandActions
 import com.willfp.eco.core.command.impl.PluginCommand
-import com.willfp.libreforge.LibReforgePlugin
-import org.bukkit.event.Listener
+import com.willfp.libreforge.SimpleProvidedHolder
+import com.willfp.libreforge.loader.LibreforgePlugin
+import com.willfp.libreforge.loader.configs.ConfigCategory
+import com.willfp.libreforge.registerHolderProvider
 
-class ActionsPlugin : LibReforgePlugin() {
+class ActionsPlugin : LibreforgePlugin() {
     init {
         instance = this
-        registerHolderProvider { Actions.values().filter { it.enabled } }
+        registerHolderProvider {
+            Actions.values()
+                .filter { it.enabled }
+                .map { SimpleProvidedHolder(it) }
+        }
     }
 
-    override fun handleEnableAdditional() {
-        this.copyConfigs("actions")
-    }
-
-    override fun loadListeners(): List<Listener> {
-        return emptyList()
+    override fun loadConfigCategories(): List<ConfigCategory> {
+        return listOf(
+            Actions
+        )
     }
 
     override fun loadPluginCommands(): List<PluginCommand> {
