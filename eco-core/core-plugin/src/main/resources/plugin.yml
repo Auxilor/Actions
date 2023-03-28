@@ -1,6 +1,6 @@
 name: ${pluginName}
 version: ${version}
-main: com.willfp.actions.ActionsPLugin
+main: com.willfp.actions.ActionsPlugin
 api-version: 1.17
 authors: [ Auxilor ]
 website: willfp.com

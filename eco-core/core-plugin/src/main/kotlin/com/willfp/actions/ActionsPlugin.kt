@@ -11,17 +11,20 @@ import com.willfp.libreforge.registerHolderProvider
 class ActionsPlugin : LibreforgePlugin() {
     init {
         instance = this
-        registerHolderProvider {
-            Actions.values()
-                .filter { it.enabled }
-                .map { SimpleProvidedHolder(it) }
-        }
     }
 
     override fun loadConfigCategories(): List<ConfigCategory> {
         return listOf(
             Actions
         )
+    }
+
+    override fun handleEnable() {
+        registerHolderProvider {
+            Actions.values()
+                .filter { it.enabled }
+                .map { SimpleProvidedHolder(it) }
+        }
     }
 
     override fun loadPluginCommands(): List<PluginCommand> {
