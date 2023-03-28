@@ -15,3 +15,21 @@ dependencies:
 load-after:
   - name: eco
     bootstrap: false
+
+
+permissions:
+  actions.*:
+    description: All actions permissions
+    default: op
+    children:
+      actions.command.*: true
+  actions.command.*:
+    description: All commands
+    default: op
+    children:
+      actions.command.actions: true
+      actions.command.reload: true
+
+  actions.command.reload:
+    description: Allows reloading the config
+    default: op
