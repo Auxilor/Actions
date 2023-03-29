@@ -5,6 +5,7 @@ import com.willfp.eco.core.config.interfaces.Config
 import com.willfp.eco.core.integrations.placeholder.PlaceholderManager
 import com.willfp.eco.core.placeholder.PlayerPlaceholder
 import com.willfp.eco.core.registry.Registrable
+import com.willfp.libreforge.EmptyProvidedHolder
 import com.willfp.libreforge.Holder
 import com.willfp.libreforge.ViolationContext
 import com.willfp.libreforge.conditions.Conditions
@@ -36,7 +37,7 @@ class Action(
                 plugin,
                 "${id}_is_met"
             ) { player ->
-                val met = conditions.all { it.isMet(player) }
+                val met = conditions.all { it.isMet(player, EmptyProvidedHolder) }
                 if (met) "1" else "0"
             }
         )
