@@ -6,7 +6,7 @@ import com.willfp.eco.core.command.impl.PluginCommand
 import com.willfp.libreforge.SimpleProvidedHolder
 import com.willfp.libreforge.loader.LibreforgePlugin
 import com.willfp.libreforge.loader.configs.ConfigCategory
-import com.willfp.libreforge.registerHolderProvider
+import com.willfp.libreforge.registerGenericHolderProvider
 
 class ActionsPlugin : LibreforgePlugin() {
     init {
@@ -20,7 +20,7 @@ class ActionsPlugin : LibreforgePlugin() {
     }
 
     override fun handleEnable() {
-        registerHolderProvider {
+        registerGenericHolderProvider {
             Actions.values()
                 .filter { it.enabled }
                 .map { SimpleProvidedHolder(it) }

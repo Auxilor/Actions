@@ -4,7 +4,12 @@ import com.willfp.eco.core.EcoPlugin
 import com.willfp.eco.core.command.impl.PluginCommand
 import org.bukkit.command.CommandSender
 
-class CommandActions(plugin: EcoPlugin) : PluginCommand(plugin, "actions", "actions.command.actions", false) {
+class CommandActions(plugin: EcoPlugin) : PluginCommand(
+    plugin,
+    "actions",
+    "actions.command.actions",
+    false
+) {
     init {
         this.addSubcommand(CommandReload(plugin))
     }
