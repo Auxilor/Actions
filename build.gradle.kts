@@ -2,7 +2,7 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    kotlin("jvm") version "1.7.10"
+    kotlin("jvm") version "1.9.20"
     id("com.github.johnrengelman.shadow") version "8.0.0"
     id("com.willfp.libreforge-gradle-plugin") version "1.0.0"
 }
@@ -37,9 +37,9 @@ allprojects {
     }
 
     dependencies {
-        compileOnly("com.willfp:eco:6.65.0")
+        compileOnly("com.willfp:eco:6.67.0")
         compileOnly("org.jetbrains:annotations:23.0.0")
-        compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.7.10")
+        compileOnly("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
     }
 
     java {
