@@ -8,9 +8,12 @@ import com.willfp.libreforge.loader.LibreforgePlugin
 import com.willfp.libreforge.loader.configs.ConfigCategory
 import com.willfp.libreforge.registerGenericHolderProvider
 
+internal lateinit var plugin: ActionsPlugin
+    private set
+
 class ActionsPlugin : LibreforgePlugin() {
     init {
-        instance = this
+        plugin = this
     }
 
     override fun loadConfigCategories(): List<ConfigCategory> {
@@ -29,13 +32,8 @@ class ActionsPlugin : LibreforgePlugin() {
 
     override fun loadPluginCommands(): List<PluginCommand> {
         return listOf(
-            CommandActions(this)
+            CommandActions
         )
-    }
-
-    companion object {
-        @JvmStatic
-        lateinit var instance: ActionsPlugin
     }
 }
 

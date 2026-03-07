@@ -1,7 +1,6 @@
 package com.willfp.actions.actions
 
 import com.google.common.collect.ImmutableList
-import com.willfp.actions.ActionsPlugin
 import com.willfp.eco.core.config.interfaces.Config
 import com.willfp.eco.core.registry.Registry
 import com.willfp.libreforge.loader.LibreforgePlugin
@@ -36,6 +35,6 @@ object Actions : ConfigCategory("action", "actions") {
     }
 
     override fun acceptConfig(plugin: LibreforgePlugin, id: String, config: Config) {
-        registry.register(Action(plugin as ActionsPlugin, id, config))
+        registry.register(Action(id, config))
     }
 }
