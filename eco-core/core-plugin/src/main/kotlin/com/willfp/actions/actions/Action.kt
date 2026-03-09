@@ -1,6 +1,6 @@
 package com.willfp.actions.actions
 
-import com.willfp.eco.core.EcoPlugin
+import com.willfp.actions.plugin
 import com.willfp.eco.core.config.interfaces.Config
 import com.willfp.eco.core.integrations.placeholder.PlaceholderManager
 import com.willfp.eco.core.placeholder.PlayerPlaceholder
@@ -14,9 +14,8 @@ import com.willfp.libreforge.effects.Effects
 import java.util.Objects
 
 class Action(
-    plugin: EcoPlugin,
     id: String,
-    val config: Config
+    config: Config
 ) : Holder, Registrable {
     val enabled = config.getBool("enabled")
 
