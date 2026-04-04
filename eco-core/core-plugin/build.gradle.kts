@@ -11,7 +11,6 @@ tasks {
     }
 }
 
-
 publishing {
     publications {
         create<MavenPublication>("shadow") {
