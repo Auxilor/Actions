@@ -1,6 +1,7 @@
 package com.willfp.actions.actions
 
 import com.google.common.collect.ImmutableList
+import com.willfp.actions.BuildConfig
 import com.willfp.eco.core.config.interfaces.Config
 import com.willfp.eco.core.registry.Registry
 import com.willfp.libreforge.loader.LibreforgePlugin
@@ -35,6 +36,11 @@ object Actions : ConfigCategory("action", "actions") {
     }
 
     override fun acceptConfig(plugin: LibreforgePlugin, id: String, config: Config) {
+        if (BuildConfig.FREE_VERSION && registry.values().size >= 5) {
+            plugin.logger.warning("The free version of Actions only supports 5 actions.")
+            plugin.logger.warning("Purchase the full version of Actions to remove this restriction!")
+            return
+        }
         registry.register(Action(id, config))
     }
 }
