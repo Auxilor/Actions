@@ -1,4 +1,4 @@
----
+﻿---
 title: How to make Actions
 sidebar_position: 1
 ---
@@ -39,7 +39,7 @@ The example effect: Pay players for killing non-player entities at a rate of $0.
 ## Understanding all the sections
 
 ### The Effects Section
-:::dangerEffects Section
+:::danger Effects Section
 
 The effects section is the core functionality of the action. You can configure effects, conditions, filters, mutators and triggers in this section to run when the action is triggered.
 
