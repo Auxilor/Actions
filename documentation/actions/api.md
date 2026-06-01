@@ -3,22 +3,29 @@ title: "API"
 sidebar_position: 5
 ---
 
-## Source Code
+This page is for developers who want to depend on Actions from their own plugin, e.g. to read registered actions or check their conditions in code. Add the repository and dependency below, then build against the API.
 
-The source code can be found [here](https://github.com/Auxilor/Actions).
+## Setup
 
-## API
+1. Add the Auxilor repository and the Actions dependency to your `build.gradle.kts`:
 
-Add this to your build.gradle.kts:
+   ```kts
+   repositories {
+       maven("https://repo.auxilor.io/repository/maven-public/")
+   }
 
-```kts
-repositories {
-    maven("https://repo.auxilor.io/repository/maven-public/")
-}
+   dependencies {
+       compileOnly("com.willfp:Actions:<version>") // Replace <version> with the latest tag
+   }
+   ```
 
-dependencies {
-    compileOnly("com.willfp:Actions:<version>")
-}
-```
+2. Replace `<version>` with the latest release, found on the [tags page](https://github.com/Auxilor/Actions/tags).
 
-The latest version available on the repo can be found [here](https://github.com/Auxilor/Actions/tags)
+The full source code is available [on GitHub](https://github.com/Auxilor/Actions).
+
+<hr/>
+
+## Where to go next
+
+- **See the data model:** browse [the source](https://github.com/Auxilor/Actions).
+- **Build actions as a user:** [How to Make a Custom Action](how-to-make-a-custom-action).
