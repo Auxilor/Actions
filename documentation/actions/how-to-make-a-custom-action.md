@@ -8,16 +8,26 @@ An action is a single YAML file that runs a set of **effects** when a **trigger*
 ## Quick start
 
 1. Open the `/actions/` folder in your plugin directory. Each `.yml` file here is one action.
-2. Copy `_example.yml` to a new file, e.g. `coins_on_kill.yml`. The file name is the action's **ID**, so use lowercase letters, numbers, and underscores only.
+2. Copy `_example.yml` to a new file, e.g. `coins_on_kill.yml`. The file name becomes the action's ID.
 3. Edit the `effects` and `conditions` sections to do what you want (see below).
 4. Run `/actions reload` in-game or from console.
 5. Trigger the action in-game. The chat message confirms the reload: `Reloaded in Xms! Loaded N actions.`
 
-:::warning Action IDs
-The ID is the file name without `.yml`. Stick to lowercase letters, numbers, and underscores, e.g. `coins_on_kill`. The free version of Actions loads at most 5 actions.
+:::tip
+`_example.yml` is included as a reference and is **never loaded**, so copy or rename it to make a real action. You can also organise actions into subfolders inside `actions/`, and they'll still load.
 :::
 
-## Action structure
+## Naming and IDs
+
+The **file name (without `.yml`) is the action's ID**. So `coins_on_kill.yml` has the ID `coins_on_kill`.
+
+That ID is what you use in commands and in the [`%actions_<id>_is_met%` placeholder](placeholderapi).
+
+:::warning ID rules
+IDs may only contain **lowercase letters, numbers, and underscores** (`a-z`, `0-9`, `_`). No spaces, capitals, or hyphens, or the action will not load. The free version of Actions loads at most 5 actions.
+:::
+
+## The structure of an action
 
 An action file has three top-level parts.
 
@@ -48,7 +58,15 @@ effects:
 conditions: [ ] # Empty means no conditions; the action always runs when triggered
 ```
 
-## Effects
+### Enabled
+
+Whether the action loads at all. Set it to `false` to switch an action off without deleting the file.
+
+```yaml
+enabled: true # Set to false to disable without deleting the file
+```
+
+### Effects
 
 The effects section is the core of the action: it defines what runs, what triggers it, and what it filters or mutates.
 
@@ -65,10 +83,13 @@ effects:
 ```
 
 :::danger Effects are their own system
-Effects, conditions, filters, mutators, and triggers are shared libreforge systems, not unique to Actions. Read [Configuring an Effect](https://plugins.auxilor.io/effects/configuring-an-effect) to configure this section correctly. To string several effects under one trigger, see [Configuring an Effect Chain](https://plugins.auxilor.io/effects/configuring-a-chain).
+Effects, conditions, filters, mutators, triggers, and chains are a shared libreforge system, not specific to Actions, with hundreds of options. They are **not** documented here, so see the dedicated guides:
+
+- [Configuring an Effect](https://plugins.auxilor.io/effects/configuring-an-effect) is the full effect, trigger, and condition reference.
+- [Configuring an Effect Chain](https://plugins.auxilor.io/effects/configuring-a-chain) strings multiple effects under one trigger for advanced actions.
 :::
 
-## Conditions
+### Conditions
 
 Conditions are requirements the player must meet for the action to run. An empty list means it always runs when triggered.
 
@@ -80,10 +101,6 @@ conditions:
 ```
 
 Conditions are also what the [`%actions_<id>_is_met%` placeholder](placeholderapi) reads, so you can reuse an action's conditions in other plugins like EcoShop. See [Configuring a Condition](https://plugins.auxilor.io/effects/configuring-a-condition) for the full option set.
-
-## Organising your actions
-
-You can place action files anywhere inside `/actions/`, including subfolders, to keep large setups tidy. The folder layout has no effect on behaviour; only the file name (the ID) matters. The file `_example.yml` is never loaded.
 
 :::tip Troubleshooting
 - **Action not running?** Check `enabled: true`, then confirm the trigger matches the event you expect. Run `/actions reload` after every edit.
