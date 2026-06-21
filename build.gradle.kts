@@ -11,7 +11,7 @@ plugins {
 
 group = "com.willfp"
 version = findProperty("version")!!
-val useGradleVersions = findProperty("useGradleVersions") == "true" || gradle.startParameter.taskNames.any { it.contains("publishToAuxilor") || it.contains("publishToLocal") }
+val useGradleVersions = findProperty("useGradleVersions") == "true" || gradle.startParameter.taskNames.any { it.contains("publishToAuxilor") }
 val libreforgeVersion = findProperty("libreforge-version")
 val ecoVersion = findProperty("eco-version")
 
@@ -40,10 +40,6 @@ publishing {
                 password = System.getenv("MAVEN_PASSWORD")
             }
         }
-        maven {
-            name = "Local"
-            url = uri(layout.buildDirectory.dir("local-repo"))
-        }
     }
 }
 
@@ -55,10 +51,6 @@ afterEvaluate {
 
 tasks.register("publishToAuxilor") {
     dependsOn(tasks.named("publishShadowPublicationToAuxilorRepository"))
-}
-
-tasks.register("publishToLocal") {
-    dependsOn(tasks.named("publishShadowPublicationToLocalRepository"))
 }
 
 allprojects {
