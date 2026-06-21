@@ -1,4 +1,4 @@
-﻿import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm") version "2.3.0"
@@ -11,6 +11,7 @@ plugins {
 
 group = "com.willfp"
 version = findProperty("version")!!
+val useGradleVersions = findProperty("useGradleVersions") == "true" || gradle.startParameter.taskNames.any { it.contains("publishToAuxilor") }
 val libreforgeVersion = findProperty("libreforge-version")
 val ecoVersion = findProperty("eco-version")
 
@@ -22,6 +23,34 @@ dependencies {
     project.project(project(":eco-core").path).subprojects {
         implementation(this)
     }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("shadow") {
+            artifactId = if (project.hasProperty("free")) "${rootProject.name}-Free" else rootProject.name
+        }
+    }
+    repositories {
+        maven {
+            name = "Auxilor"
+            url = uri("https://repo.auxilor.io/repository/maven-private/")
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
+}
+
+afterEvaluate {
+    publishing.publications.named<MavenPublication>("shadow") {
+        artifact(tasks.named("libreforgeJar"))
+    }
+}
+
+tasks.register("publishToAuxilor") {
+    dependsOn(tasks.named("publishShadowPublicationToAuxilorRepository"))
 }
 
 allprojects {
@@ -69,8 +98,6 @@ allprojects {
         compileJava {
             options.isDeprecation = true
             options.encoding = "UTF-8"
-
-            dependsOn(clean)
         }
 
         processResources {
