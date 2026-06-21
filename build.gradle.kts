@@ -6,14 +6,14 @@ plugins {
     id("java-library")
     id("maven-publish")
     id("com.gradleup.shadow") version "9.3.1"
-    id("com.willfp.libreforge-gradle-plugin") version "2.1.0"
+    id("com.willfp.libreforge-gradle-plugin") version "2.0.0"
 }
 
 group = "com.willfp"
 version = findProperty("version")!!
 // useGradleVersions=true (set by release workflows) pins dependencies to the
 // versions in gradle.properties; otherwise dev builds track the latest master snapshot.
-val useGradleVersions = findProperty("useGradleVersions") == "true" || gradle.startParameter.taskNames.any { it.contains("publishToAuxilor") }
+val useGradleVersions = findProperty("useGradleVersions") == "true" || gradle.startParameter.taskNames.any { it.contains("publishToAuxilor") || it.contains("publishToLocal") }
 val libreforgeVersion = if (useGradleVersions) findProperty("libreforge-version") else "dev-SNAPSHOT"
 val ecoVersion = if (useGradleVersions) findProperty("eco-version") else "dev-SNAPSHOT"
 
@@ -42,6 +42,10 @@ publishing {
                 password = System.getenv("MAVEN_PASSWORD")
             }
         }
+        maven {
+            name = "Local"
+            url = uri(layout.buildDirectory.dir("local-repo"))
+        }
     }
 }
 
@@ -53,6 +57,10 @@ afterEvaluate {
 
 tasks.register("publishToAuxilor") {
     dependsOn(tasks.named("publishShadowPublicationToAuxilorRepository"))
+}
+
+tasks.register("publishToLocal") {
+    dependsOn(tasks.named("publishShadowPublicationToLocalRepository"))
 }
 
 allprojects {
