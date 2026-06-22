@@ -1,4 +1,4 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+﻿import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("jvm") version "2.3.0"
@@ -49,6 +49,9 @@ afterEvaluate {
     }
 }
 
+tasks.named("generatePomFileForShadowPublication") {
+    mustRunAfter(tasks.named("clean"))
+}
 tasks.register("publishToAuxilor") {
     dependsOn(tasks.named("publishShadowPublicationToAuxilorRepository"))
 }
