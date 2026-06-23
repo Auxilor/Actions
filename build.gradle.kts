@@ -58,14 +58,6 @@ publishing {
                 password = System.getenv("MAVEN_PASSWORD")
             }
         }
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Auxilor/Actions")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
     }
 }
 
@@ -82,7 +74,6 @@ tasks.register("publishToAuxilor") {
     dependsOn(
         "publishPrivatePublicationToAuxilorRepository",
         "publishReleasePublicationToAuxilorReleasesRepository",
-        "publishReleasePublicationToGitHubPackagesRepository",
     )
 }
 
