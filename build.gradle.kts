@@ -73,9 +73,6 @@ afterEvaluate {
     publishing.publications.named<MavenPublication>("private") {
         artifact(tasks.named("libreforgeJar"))
     }
-    publishing.publications.named<MavenPublication>("release") {
-        artifact(tasks.named("libreforgeJar"))
-    }
 }
 
 tasks.matching { it.name.startsWith("generatePomFileFor") }.configureEach {
