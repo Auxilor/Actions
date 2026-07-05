@@ -65,7 +65,7 @@ effects:
 ```
 
 :::danger Effects are their own system
-Effects, conditions, filters, mutators, and triggers are shared libreforge systems, not unique to Actions. Read [Configuring an Effect](https://plugins.auxilor.io/effects/configuring-an-effect) to configure this section correctly. To string several effects under one trigger, see [Configuring an Effect Chain](https://plugins.auxilor.io/effects/configuring-a-chain).
+Effects, conditions, filters, mutators, and triggers are shared libreforge systems, not unique to Actions. Read [Configuring an Effect](https://hub.auxilor.io/wiki/libreforge/configuring-an-effect) to configure this section correctly. To string several effects under one trigger, see [Configuring an Effect Chain](https://hub.auxilor.io/wiki/libreforge/configuring-a-chain).
 :::
 
 ## Conditions
@@ -79,7 +79,7 @@ conditions:
       health: 10 # This action only runs while the player is above 10 health
 ```
 
-Conditions are also what the [`%actions_<id>_is_met%` placeholder](placeholderapi) reads, so you can reuse an action's conditions in other plugins like EcoShop. See [Configuring a Condition](https://plugins.auxilor.io/effects/configuring-a-condition) for the full option set.
+Conditions are also what the [`%actions_<id>_is_met%` placeholder](placeholderapi) reads, so you can reuse an action's conditions in other plugins like EcoShop. See [Configuring a Condition](https://hub.auxilor.io/wiki/libreforge/configuring-a-condition) for the full option set.
 
 ## Organising your actions
 

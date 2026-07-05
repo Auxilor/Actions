@@ -7,7 +7,7 @@
 # If the action should be enabled
 enabled: true
 
-# Read https://plugins.auxilor.io/effects/configuring-an-effect
+# Read https://hub.auxilor.io/wiki/libreforge/configuring-an-effect
 # The effects for the action
 effects:
   - id: give_money
@@ -20,6 +20,6 @@ effects:
         - player
 
 
-# Read https://plugins.auxilor.io/effects/configuring-a-condition
+# Read https://hub.auxilor.io/wiki/libreforge/configuring-a-condition
 # The conditions for the action to work
 conditions: [ ]

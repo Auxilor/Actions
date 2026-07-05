@@ -6,7 +6,7 @@ Actions lets you add and tweak server behaviour without writing a plugin. You bu
 
 ## What is Actions?
 
-Actions is a no-code automation plugin built on [libreforge](https://plugins.auxilor.io/effects/configuring-an-effect). Each action is a YAML file that pairs a set of **effects** (what happens) with **conditions** and **triggers** (when it happens). Because effects and triggers are shared across the whole Auxilor ecosystem, anything those plugins can do, an action can do.
+Actions is a no-code automation plugin built on [libreforge](https://hub.auxilor.io/wiki/libreforge/configuring-an-effect). Each action is a YAML file that pairs a set of **effects** (what happens) with **conditions** and **triggers** (when it happens). Because effects and triggers are shared across the whole Auxilor ecosystem, anything those plugins can do, an action can do.
 
 ## What sets Actions apart?
 

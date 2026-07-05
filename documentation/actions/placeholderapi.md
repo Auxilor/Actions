@@ -16,4 +16,4 @@ For example, an action file named `vip_zone.yml` is read with `%actions_vip_zone
 ## Where to go next
 
 - **Set conditions on an action:** [How to Make a Custom Action](how-to-make-a-custom-action).
-- **Condition options:** [Configuring a Condition](https://plugins.auxilor.io/effects/configuring-a-condition).
+- **Condition options:** [Configuring a Condition](https://hub.auxilor.io/wiki/libreforge/configuring-a-condition).
