@@ -54,6 +54,9 @@ class ActionsPlugin : LibreforgePlugin() {
         },
         EcoMetricsChart.SimplePie("use_setblock_break") {
             if (configYml.getBool("effects.use-setblock-break")) "enabled" else "disabled"
+        },
+        EcoMetricsChart.SimplePie("plugin_version") {
+            if (BuildConfig.FREE_VERSION) "Free" else "Premium"
         }
     )
 }
