@@ -36,10 +36,6 @@ tasks {
         dependsOn(generateBuildConfig)
     }
 
-    sourcesJar {
-        dependsOn(generateBuildConfig)
-    }
-
     build {
         dependsOn(publishToMavenLocal)
     }
