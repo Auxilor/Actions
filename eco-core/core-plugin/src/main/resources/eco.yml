@@ -6,3 +6,4 @@ options:
   resource-id: 2873
   bstats-id: 16436
   color: "&#2d2d2d"
+  eco-api-version: ${ecoApiVersion}
