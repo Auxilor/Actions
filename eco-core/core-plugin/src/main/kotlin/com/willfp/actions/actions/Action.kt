@@ -43,6 +43,11 @@ class Action(
                 // placeholder reflects the config after a reload.
                 val action = Actions.getByID(rawID) ?: return@PlayerPlaceholder "0"
 
+                // Disabled actions never dispatch their effects, so they are never met.
+                if (!action.enabled) {
+                    return@PlayerPlaceholder "0"
+                }
+
                 // Use the same provided holder as the effect dispatch, so conditions see
                 // the action itself rather than a blank holder.
                 val met = action.conditions.areMet(
