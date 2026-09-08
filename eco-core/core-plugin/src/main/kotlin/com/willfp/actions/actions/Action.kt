@@ -5,9 +5,9 @@ import com.willfp.eco.core.config.interfaces.Config
 import com.willfp.eco.core.integrations.placeholder.PlaceholderManager
 import com.willfp.eco.core.placeholder.PlayerPlaceholder
 import com.willfp.eco.core.registry.Registrable
-import com.willfp.libreforge.EmptyProvidedHolder
 import com.willfp.libreforge.EntityDispatcher
 import com.willfp.libreforge.Holder
+import com.willfp.libreforge.SimpleProvidedHolder
 import com.willfp.libreforge.ViolationContext
 import com.willfp.libreforge.conditions.Conditions
 import com.willfp.libreforge.effects.Effects
@@ -43,7 +43,12 @@ class Action(
                 // placeholder reflects the config after a reload.
                 val action = Actions.getByID(rawID) ?: return@PlayerPlaceholder "0"
 
-                val met = action.conditions.areMet(EntityDispatcher(player), EmptyProvidedHolder)
+                // Use the same provided holder as the effect dispatch, so conditions see
+                // the action itself rather than a blank holder.
+                val met = action.conditions.areMet(
+                    EntityDispatcher(player),
+                    SimpleProvidedHolder(action)
+                )
                 if (met) "1" else "0"
             }
         )
