@@ -32,12 +32,18 @@ class Action(
     override val id = plugin.createNamespacedKey(id)
 
     init {
+        val rawID = id
+
         PlaceholderManager.registerPlaceholder(
             PlayerPlaceholder(
                 plugin,
-                "${id}_is_met"
+                "${rawID}_is_met"
             ) { player ->
-                val met = conditions.all { it.isMet(EntityDispatcher(player), EmptyProvidedHolder) }
+                // Resolve the current action rather than capturing this instance, so the
+                // placeholder reflects the config after a reload.
+                val action = Actions.getByID(rawID) ?: return@PlayerPlaceholder "0"
+
+                val met = action.conditions.areMet(EntityDispatcher(player), EmptyProvidedHolder)
                 if (met) "1" else "0"
             }
         )
