@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>CognitiveComplexMethod:ActionsPlugin.kt:ActionsPlugin$override fun getCustomCharts</ID>
+    <ID>ExpressionBodySyntax:Action.kt:Action$return Objects.hash(this.id)</ID>
+    <ID>ExpressionBodySyntax:Action.kt:Action$return this.id.key</ID>
+    <ID>ExpressionBodySyntax:Actions.kt:Actions$return ImmutableList.copyOf(registry.values())</ID>
+    <ID>ExpressionBodySyntax:Actions.kt:Actions$return registry[name]</ID>
+    <ID>IC002:Action.kt:Action$// Disabled actions never dispatch their effects, so they are never met.</ID>
+    <ID>IC002:Action.kt:Action$// Resolve the current action rather than capturing this instance, so the</ID>
+    <ID>IC002:Action.kt:Action$// Use the same provided holder as the effect dispatch, so conditions see</ID>
+    <ID>IC002:CommandReload.kt:CommandReload$// Reloading rebuilds shared registries, so it belongs on the global region.</ID>
+    <ID>LabeledExpression:Action.kt:Action$@PlayerPlaceholder</ID>
+    <ID>MagicNumber:Actions.kt:Actions$5</ID>
+    <ID>NoNameShadowing:ActionsPlugin.kt:ActionsPlugin${ SimpleProvidedHolder(it) }</ID>
+    <ID>NoNameShadowing:ActionsPlugin.kt:ActionsPlugin${ it.enabled }</ID>
+    <ID>UnnamedParameterUse:CommandReload.kt:CommandReload$replace</ID>
+  </CurrentIssues>
+</SmellBaseline>
