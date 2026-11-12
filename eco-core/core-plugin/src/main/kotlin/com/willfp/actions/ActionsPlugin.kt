@@ -2,12 +2,12 @@ package com.willfp.actions
 
 import com.willfp.actions.actions.Actions
 import com.willfp.actions.commands.CommandActions
-import com.willfp.eco.core.bstats.EcoMetricsChart
 import com.willfp.eco.core.command.impl.PluginCommand
-import com.willfp.libreforge.SimpleProvidedHolder
-import com.willfp.libreforge.loader.LibreforgePlugin
-import com.willfp.libreforge.loader.configs.ConfigCategory
-import com.willfp.libreforge.registerGenericHolderProvider
+import wiki.ecohub.config.category.NativeConfigCategory
+import wiki.ecohub.core.plugin.EcoPlugin
+import wiki.ecohub.provider.metrics.EcoMetricsChart
+import wiki.ecohub.rules.holder.SimpleProvidedHolder
+import wiki.ecohub.rules.holder.registerGenericHolderProvider
 
 internal lateinit var plugin: ActionsPlugin
     private set

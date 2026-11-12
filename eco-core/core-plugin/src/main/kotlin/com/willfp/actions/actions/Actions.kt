@@ -2,10 +2,10 @@ package com.willfp.actions.actions
 
 import com.google.common.collect.ImmutableList
 import com.willfp.actions.BuildConfig
-import com.willfp.eco.core.config.interfaces.Config
-import com.willfp.eco.core.registry.Registry
-import com.willfp.libreforge.loader.LibreforgePlugin
-import com.willfp.libreforge.loader.configs.ConfigCategory
+import wiki.ecohub.config.Config
+import wiki.ecohub.config.category.NativeConfigCategory
+import wiki.ecohub.core.plugin.EcoPlugin
+import wiki.ecohub.core.registry.Registry
 
 object Actions : ConfigCategory("action", "actions") {
     private val registry = Registry<Action>()
