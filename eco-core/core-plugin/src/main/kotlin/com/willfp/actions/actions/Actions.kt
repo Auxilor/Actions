@@ -7,7 +7,7 @@ import wiki.ecohub.config.category.NativeConfigCategory
 import wiki.ecohub.core.plugin.EcoPlugin
 import wiki.ecohub.core.registry.Registry
 
-object Actions : ConfigCategory("action", "actions") {
+object Actions : NativeConfigCategory("actions", "action") {
     private val registry = Registry<Action>()
 
     /**
@@ -31,11 +31,11 @@ object Actions : ConfigCategory("action", "actions") {
         return registry[name]
     }
 
-    override fun clear(plugin: LibreforgePlugin) {
+    override fun clear(plugin: EcoPlugin) {
         registry.clear()
     }
 
-    override fun acceptConfig(plugin: LibreforgePlugin, id: String, config: Config) {
+    override fun acceptConfig(plugin: EcoPlugin, id: String, config: Config) {
         if (BuildConfig.FREE_VERSION && registry.values().size >= 5) {
             plugin.logger.warning("The free version of Actions only supports 5 actions.")
             plugin.logger.warning("Purchase the full version of Actions to remove this restriction!")
