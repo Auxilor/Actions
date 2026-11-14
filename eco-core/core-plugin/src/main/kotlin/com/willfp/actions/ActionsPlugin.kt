@@ -1,23 +1,23 @@
 package com.willfp.actions
 
 import com.willfp.actions.actions.Actions
-import com.willfp.actions.commands.CommandActions
-import com.willfp.eco.core.bstats.EcoMetricsChart
-import com.willfp.eco.core.command.impl.PluginCommand
-import com.willfp.libreforge.SimpleProvidedHolder
-import com.willfp.libreforge.loader.LibreforgePlugin
-import com.willfp.libreforge.loader.configs.ConfigCategory
-import com.willfp.libreforge.registerGenericHolderProvider
+import com.willfp.actions.commands.actionsCommand
+import wiki.ecohub.config.category.NativeConfigCategory
+import wiki.ecohub.core.command.EcoCommand
+import wiki.ecohub.core.plugin.EcoPlugin
+import wiki.ecohub.provider.metrics.EcoMetricsChart
+import wiki.ecohub.rules.holder.SimpleProvidedHolder
+import wiki.ecohub.rules.holder.registerGenericHolderProvider
 
 internal lateinit var plugin: ActionsPlugin
     private set
 
-class ActionsPlugin : LibreforgePlugin() {
+class ActionsPlugin : EcoPlugin() {
     init {
         plugin = this
     }
 
-    override fun loadConfigCategories(): List<ConfigCategory> {
+    override fun loadConfigCategories(): List<NativeConfigCategory> {
         return listOf(
             Actions
         )
@@ -31,9 +31,9 @@ class ActionsPlugin : LibreforgePlugin() {
         }
     }
 
-    override fun loadPluginCommands(): List<PluginCommand> {
+    override fun loadPluginCommands(): List<EcoCommand> {
         return listOf(
-            CommandActions
+            actionsCommand()
         )
     }
 
