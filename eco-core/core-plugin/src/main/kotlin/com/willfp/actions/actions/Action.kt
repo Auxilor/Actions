@@ -1,16 +1,16 @@
 package com.willfp.actions.actions
 
 import com.willfp.actions.plugin
-import com.willfp.eco.core.config.interfaces.Config
-import com.willfp.eco.core.integrations.placeholder.PlaceholderManager
-import com.willfp.eco.core.placeholder.PlayerPlaceholder
-import com.willfp.eco.core.registry.Registrable
-import com.willfp.libreforge.EntityDispatcher
-import com.willfp.libreforge.Holder
-import com.willfp.libreforge.SimpleProvidedHolder
-import com.willfp.libreforge.ViolationContext
-import com.willfp.libreforge.conditions.Conditions
-import com.willfp.libreforge.effects.Effects
+import wiki.ecohub.config.Config
+import wiki.ecohub.config.ViolationContext
+import wiki.ecohub.core.registry.Registrable
+import wiki.ecohub.rules.condition.Conditions
+import wiki.ecohub.rules.effect.Effects
+import wiki.ecohub.rules.holder.EntityDispatcher
+import wiki.ecohub.rules.holder.Holder
+import wiki.ecohub.rules.holder.SimpleProvidedHolder
+import wiki.ecohub.ui.placeholder.PlaceholderManager
+import wiki.ecohub.ui.placeholder.type.PlayerPlaceholder
 import java.util.Objects
 
 class Action(
